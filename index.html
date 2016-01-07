@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Macflix</title>
+    
+    <style>
+    body,
+    html,
+    webview {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+    </style>
+  </head>
+  <body>
+    <webview id="netflix" src="https://www.netflix.com" style="display:inline-block; width:100%; height:100%" preload="./webview.js" plugins></webview>
+    <script>
+    webview = document.getElementById('netflix');
+    webview.addEventListener('console-message', function(e) {
+      console.log('Netflix:', e.message);
+    });
+    webview.addEventListener("dom-ready", function() {
+      // TODO: Yes, this is messy - just playing with what styling is needed
+      webview.insertCSS("#hdPinTarget { padding-left: 60px; } .akira-header>.logo{left: 50%;position: absolute; margin-left: -58px; top: 8px;");
+      webview.openDevTools();
+    });
+    </script>
+  </body>
+</html>

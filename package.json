@@ -1,0 +1,31 @@
+{
+  "name": "desktop-docs",
+  "version": "1.0.0",
+  "description": "Google Docs for Desktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tommoor/desktop-docs.git"
+  },
+  "keywords": [
+    "electron",
+    "desktop",
+    "gdocs",
+    "google",
+    "docs"
+  ],
+  "author": "Tom Moor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/desktop-docs/desktop-docs/issues"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0"
+  }
+}
