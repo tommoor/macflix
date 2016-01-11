@@ -2,14 +2,15 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-// TODO: these will work in next version of Electron
-app.commandLine.appendSwitch('widevine-cdm-path', 'widevinecdmadapter.plugin');
-app.commandLine.appendSwitch('widevine-cdm-version', '1.4.8.866');
+var plugin = path.join(__dirname, 'WidevineCDM', 'widevinecdmadapter.plugin');
+electron.app.commandLine.appendSwitch('widevine-cdm-path', plugin);
+electron.app.commandLine.appendSwitch('widevine-cdm-version', '1.4.8.866');
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {

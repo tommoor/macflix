@@ -1,9 +1,11 @@
 var $ = require('jquery');
 var BrowserWindow = require('electron').remote.BrowserWindow;
-console.log(BrowserWindow);
+
+window.chrome = {}
 
 $(function(){
   $(document).on('click', 'a.playLink', function(ev){
+    /*
     ev.preventDefault();
     ev.stopPropagation();
     var href = $(this).attr('href');
@@ -23,5 +25,6 @@ $(function(){
     }
 
     return false;
+    */
   });
 });
