@@ -2,14 +2,17 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const AppMenu = require('./menu');
 const globalShortcut = electron.globalShortcut;
 const path = require('path');
+const shell = require('electron').shell;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let applicationMenu;
 
-var plugin = path.join(__dirname, 'WidevineCDM', 'widevinecdmadapter.plugin');
+var plugin = path.join(__dirname, '..', '..', 'WidevineCDM', 'widevinecdmadapter.plugin');
 electron.app.commandLine.appendSwitch('widevine-cdm-path', plugin);
 electron.app.commandLine.appendSwitch('widevine-cdm-version', '1.4.8.866');
 
@@ -25,6 +28,20 @@ app.on('window-all-closed', function() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
+  applicationMenu = new AppMenu();
+  
+  applicationMenu.on('action', function(event, param) {
+    console.log(event, param);
+    switch(event) {
+      case 'app.quit':
+        return app.quit();
+      case 'app.toggle_floating':
+        return mainWindow.setAlwaysOnTop(!mainWindow.isAlwaysOnTop());
+      case 'app.open_url':
+        return shell.openExternal(param);
+    }
+  });
+  
   mainWindow = new BrowserWindow({
     width: 800,
     height: 470,

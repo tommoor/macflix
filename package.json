@@ -23,7 +23,8 @@
     "url": "https://github.com/desktop-docs/desktop-docs/issues"
   },
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "underscore": "^1.7.0"
   },
   "devDependencies": {
     "electron-prebuilt": "^0.36.0"
