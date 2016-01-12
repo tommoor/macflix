@@ -31,7 +31,6 @@ app.on('ready', function() {
   applicationMenu = new AppMenu();
   
   applicationMenu.on('action', function(event, param) {
-    console.log(event, param);
     switch(event) {
       case 'app.quit':
         return app.quit();
@@ -56,9 +55,13 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+  //mainWindow.openDevTools();
   
   globalShortcut.register('MediaPlayPause', function() {
     mainWindow.webContents.send('keypress', 'MediaPlayPause');
+  });
+  globalShortcut.register('MediaNextTrack', function() {
+    mainWindow.webContents.send('keypress', 'MediaNextTrack');
   });
 });
 

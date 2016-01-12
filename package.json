@@ -1,26 +1,25 @@
 {
-  "name": "desktop-docs",
+  "name": "macflix",
   "version": "1.0.0",
-  "description": "Google Docs for Desktop",
+  "description": "Macflix is Netflix on your Mac",
   "main": "main.js",
   "scripts": {
     "start": "electron src/main/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tommoor/desktop-docs.git"
+    "url": "git+https://github.com/tommoor/macflix.git"
   },
   "keywords": [
     "electron",
     "desktop",
-    "gdocs",
-    "google",
-    "docs"
+    "netflix",
+    "video"
   ],
   "author": "Tom Moor",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/desktop-docs/desktop-docs/issues"
+    "url": "https://github.com/tommoor/macflix/issues"
   },
   "dependencies": {
     "jquery": "^2.1.4",
