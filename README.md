@@ -8,4 +8,4 @@ Mac desktop wrapper for Netflix with all the goodies you'd expect. Currently a w
 $ npm install && npm start
 ```
 
-#### License [CC0 (Public Domain)](LICENSE.md)
+#### License [MIT](LICENSE.md)

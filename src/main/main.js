@@ -2,6 +2,7 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const globalShortcut = electron.globalShortcut;
 const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -31,11 +32,19 @@ app.on('ready', function() {
     titleBarStyle: 'hidden-inset'
   });
 
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/../index.html');
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+  
+  globalShortcut.register('MediaPlayPause', function() {
+    mainWindow.webContents.send('keypress', 'MediaPlayPause');
+  });
+});
+
+app.on('will-quit', function() {
+  globalShortcut.unregisterAll();
 });
