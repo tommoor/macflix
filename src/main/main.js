@@ -27,7 +27,13 @@ app.on('window-all-closed', function() {
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-app.on('ready', function() {
+app.on('ready', createWindow);
+
+app.on('will-quit', function() {
+  globalShortcut.unregisterAll();
+});
+
+function createWindow () {
   applicationMenu = new AppMenu();
   
   applicationMenu.on('action', function(event, param) {
@@ -63,8 +69,4 @@ app.on('ready', function() {
   globalShortcut.register('MediaNextTrack', function() {
     mainWindow.webContents.send('keypress', 'MediaNextTrack');
   });
-});
-
-app.on('will-quit', function() {
-  globalShortcut.unregisterAll();
-});
+};
