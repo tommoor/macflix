@@ -2,9 +2,11 @@
   "name": "macflix",
   "version": "1.0.0",
   "description": "Macflix is Netflix on your Mac",
-  "main": "main.js",
+  "productName": "Macflix",
+  "main": "src/main/main.js",
   "scripts": {
-    "start": "electron src/main/main.js"
+    "start": "electron src/main/main.js",
+    "package": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/netflix.icns --prune=true --out=builds"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "underscore": "^1.7.0"
   },
   "devDependencies": {
+    "electron-packager": "^8.6.0",
     "electron-prebuilt": "^0.36.0"
   }
 }
