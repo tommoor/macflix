@@ -11,6 +11,7 @@ const shell = require('electron').shell;
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let applicationMenu;
+let willQuitApp = false;
 
 var plugin = path.join(__dirname, '..', '..', 'WidevineCDM', 'widevinecdmadapter.plugin');
 electron.app.commandLine.appendSwitch('widevine-cdm-path', plugin);
@@ -28,8 +29,8 @@ app.on('window-all-closed', function() {
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (mainWindow === null) {
-    createWindow()
+  if (!mainWindow.isVisible()) {
+    mainWindow.show()
   }
 });
 
@@ -63,12 +64,20 @@ function createWindow () {
   });
 
   mainWindow.loadURL('file://' + __dirname + '/../index.html');
-  mainWindow.on('closed', function() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    mainWindow = null;
-  });
+
+  mainWindow.on('close', function (event) {
+    if (willQuitApp) {
+      // Dereference the window object, usually you would store windows
+      // in an array if your app supports multi windows, this is the time
+      // when you should delete the corresponding element.
+      mainWindow = null;
+    } else {
+      // Hide mainWindow when clicking close window
+      event.preventDefault();
+      mainWindow.hide();
+    }
+  })
+
   //mainWindow.openDevTools();
   
   globalShortcut.register('MediaPlayPause', function() {
@@ -78,3 +87,7 @@ function createWindow () {
     mainWindow.webContents.send('keypress', 'MediaNextTrack');
   });
 };
+
+//'before-quit' is emitted when Electron receives 
+// the signal to exit and wants to start closing windows
+app.on('before-quit', () => willQuitApp = true);
