@@ -74,7 +74,11 @@ function createWindow () {
     } else {
       // Hide mainWindow when clicking close window
       event.preventDefault();
-      mainWindow.hide();
+      if(mainWindow.isFullScreen()){
+        mainWindow.setFullScreen(false);
+      } else {
+        mainWindow.hide();
+      }
     }
   })
 
