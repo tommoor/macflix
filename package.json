@@ -45,6 +45,7 @@
         }
       ],
       "icon": "assets/icons/netflix.icns",
+      "background": "assets/dmgBackground/background.tiff",
       "title": "${productName}"
     }
   },
