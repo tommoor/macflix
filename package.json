@@ -6,7 +6,8 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron src/main/main.js",
-    "package": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/netflix.icns --prune=true --out=builds"
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
