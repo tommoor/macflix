@@ -24,6 +24,30 @@
   "bugs": {
     "url": "https://github.com/tommoor/macflix/issues"
   },
+  "build": {
+    "appId": "com.tommoor.macflix",
+    "asar": false,
+    "mac": {
+      "category": "public.app-category.video",
+      "icon": "assets/icons/netflix.icns"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 140,
+          "y": 180
+        },
+        {
+          "x": 400,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "icon": "assets/icons/netflix.icns",
+      "title": "${productName}"
+    }
+  },
   "dependencies": {
     "jquery": "^2.1.4",
     "underscore": "^1.7.0"
