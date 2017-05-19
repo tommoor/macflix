@@ -42,8 +42,10 @@ app.on('ready', function() {
   });
   
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 801,
+    'min-width': 801,
     height: 470,
+    'min-height': 52.
     acceptFirstMouse: true,
     titleBarStyle: 'hidden-inset'
   });
