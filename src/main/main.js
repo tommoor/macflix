@@ -45,7 +45,7 @@ app.on('ready', function() {
     width: 801,
     'min-width': 801,
     height: 470,
-    'min-height': 52.
+    'min-height': 52,
     acceptFirstMouse: true,
     titleBarStyle: 'hidden-inset'
   });
