@@ -3,7 +3,6 @@ const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const AppMenu = require('./menu');
-const globalShortcut = electron.globalShortcut;
 const path = require('path');
 const shell = require('electron').shell;
 
@@ -31,17 +30,12 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (!mainWindow.isVisible() && !(mainWindow == null)) {
     mainWindow.show();
-    registerShortcut();
   };
 });
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow);
-
-app.on('will-quit', function() {
-  globalShortcut.unregisterAll();
-});
 
 function createWindow () {
   applicationMenu = new AppMenu();
@@ -81,26 +75,13 @@ function createWindow () {
         mainWindow.setFullScreen(false);
       } else {
         mainWindow.hide();
-        globalShortcut.unregisterAll();
       }
     }
   })
 
   //mainWindow.openDevTools();
-  
-  registerShortcut();
 };
 
 //'before-quit' is emitted when Electron receives 
 // the signal to exit and wants to start closing windows
 app.on('before-quit', () => willQuitApp = true);
-
-// register Shortcuts
-function registerShortcut() {
-  globalShortcut.register('MediaPlayPause', function() {
-    mainWindow.webContents.send('keypress', 'MediaPlayPause');
-  });
-  globalShortcut.register('MediaNextTrack', function() {
-    mainWindow.webContents.send('keypress', 'MediaNextTrack');
-  });
-}

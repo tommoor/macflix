@@ -1,6 +1,6 @@
 {
   "name": "macflix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Macflix is Netflix on your Mac",
   "productName": "Macflix",
   "main": "src/main/main.js",
