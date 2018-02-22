@@ -11,12 +11,3 @@ webview.addEventListener("dom-ready", function() {
   //webview.openDevTools();
   webview.insertCSS("#netflix-player .player-back-to-browsing { top: 35px; } #hdPinTarget { padding-left: 60px; } .akira-header>.logo{left: 50%;position: absolute; margin-left: -58px; top: 8px;");
 });
-
-ipcRenderer.on('keypress', function(event, arg) {
-  switch(arg) {
-    case 'MediaNextTrack':
-      return webview.send('nextVideo');
-    case 'MediaPlayPause':
-      return webview.send('playOrPause');
-  }
-});

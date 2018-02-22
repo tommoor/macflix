@@ -1,12 +1,13 @@
 {
   "name": "macflix",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Macflix is Netflix on your Mac",
   "productName": "Macflix",
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron src/main/main.js",
-    "package": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/netflix.icns --prune=true --out=builds"
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,37 @@
   "bugs": {
     "url": "https://github.com/tommoor/macflix/issues"
   },
+  "build": {
+    "appId": "com.tommoor.macflix",
+    "asar": false,
+    "mac": {
+      "category": "public.app-category.video",
+      "icon": "assets/icons/netflix.icns"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 140,
+          "y": 180
+        },
+        {
+          "x": 400,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "icon": "assets/icons/netflix.icns",
+      "background": "assets/dmgBackground/background.tiff",
+      "title": "${productName}"
+    }
+  },
   "dependencies": {
     "jquery": "^2.1.4",
     "underscore": "^1.7.0"
   },
   "devDependencies": {
-    "electron-packager": "^8.6.0",
+    "electron-builder": "^17.5.0",
     "electron-prebuilt": "^0.36.0"
   }
 }
